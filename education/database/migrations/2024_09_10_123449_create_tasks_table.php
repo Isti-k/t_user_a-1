@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Task;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -22,6 +23,33 @@ return new class extends Migration
             $table->foreignId('project_id')->references('id')->on('projects');
             $table->timestamps();
         });
+
+        Task::created([
+            'title' => 'hírdetés írása',
+            'description' => 'hírdetések szövegének megfogalmazása',
+            'end_date' => '2024-09-17',
+            'status' => 1,
+            'user_id' => 1,
+            'project_id' => 3
+        ]);
+
+        Task::created([
+            'title' => 'olvasás',
+            'description' => 'hírdetések felolvasása',
+            'end_date' => '2024-09-17',
+            'status' => 2,
+            'user_id' => 3,
+            'project_id' => 1
+        ]);
+
+        Task::created([
+            'title' => 'galéria képek',
+            'description' => 'galéria képekkel való feltöltés',
+            'end_date' => '2024-09-18',
+            'status' => 0,
+            'user_id' => 2,
+            'project_id' => 2
+        ]);
     }
 
     /**
